@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<title>JSF Tutorial!</title>
+</head>
+
+<body>
+	#{helloWorld.getMessage()}
+
+	<h:form>
+		<h:commandLink action="#{navigationController.showPage}?faces-redirect = true" value="hello">
+			<f:param name="pageId" value="1" />
+		</h:commandLink>
+		<h:commandLink action="#{navigationController.showPage}" value="welcome">
+			<f:param name="pageId" value="2" />
+		</h:commandLink>
+		<h:commandLink action="#{navigationController.showPage}" value="Home">
+			<f:param name="pageId" value="3" />
+		</h:commandLink>
+	</h:form>
+</body>
+</html>
