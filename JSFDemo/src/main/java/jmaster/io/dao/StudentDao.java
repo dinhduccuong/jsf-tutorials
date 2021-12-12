@@ -33,7 +33,8 @@ public class StudentDao {
 	public void update(Student student) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
-		session.save(student);
+		System.out.println(student.getId());
+		session.merge(student);
 		session.getTransaction().commit();
 	}
 
