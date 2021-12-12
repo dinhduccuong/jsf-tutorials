@@ -10,18 +10,36 @@
 <body>
 	<h1>Student Table</h1>
 	<h:form>
-		<h:commandLink
-			action="#{navigationController.showPage}?faces-redirect = true"
-			value="hello">
-			<f:param name="pageId" value="1" />
-		</h:commandLink>
-		<h:commandLink action="#{navigationController.showPage}"
-			value="welcome">
-			<f:param name="pageId" value="2" />
-		</h:commandLink>
-		<h:commandLink action="#{navigationController.showPage}" value="Home">
-			<f:param name="pageId" value="3" />
-		</h:commandLink>
+		<h:commandButton
+			action="/student/add-student.xhtml?faces-redirect=true"
+			value="Create New" />
 	</h:form>
+	<br />
+	<h:dataTable value="#{studentBean.getStudents()}" var="s" border="1">
+		<h:column>
+			<f:facet name="header">ID</f:facet>
+                #{s.id}
+            </h:column>
+		<h:column>
+			<f:facet name="header">Name</f:facet>               
+                #{s.name}
+        </h:column>
+		<h:column>
+			<f:facet name="header">Age</f:facet>               
+                #{s.age}
+        </h:column>
+		<h:column>
+			<f:facet name="header">Address</f:facet>               
+                #{s.homeAddress}
+        </h:column>
+		<h:column>
+			<f:facet name="header">Delete</f:facet>
+			<h:form>
+				<h:commandButton value="Delete"
+					action="#{studentBean.deleteStudent(s.id)}">
+				</h:commandButton>
+			</h:form>
+		</h:column>
+	</h:dataTable>
 </body>
 </html>

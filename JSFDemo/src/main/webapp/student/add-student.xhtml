@@ -13,14 +13,16 @@
 	<h:form>
 		<p>What's your name?</p>
 		<h:inputText value="#{studentBean.name}"></h:inputText>
-		
+
 		<p>What's your age?</p>
 		<h:inputText value="#{studentBean.age}"></h:inputText>
-		
+
 		<p>What's your address?</p>
 		<h:inputText value="#{studentBean.homeAddress}"></h:inputText>
-		
-		<h:commandButton value="Them" action="#{studentBean.createStudent}"></h:commandButton>
+
+		<h:commandButton value="Them" action="#{studentBean.createStudent()}">
+			<f:ajax />
+		</h:commandButton>
 	</h:form>
 </h:body>
 </html>

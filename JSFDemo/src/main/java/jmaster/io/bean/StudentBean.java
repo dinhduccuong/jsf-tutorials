@@ -60,12 +60,13 @@ public class StudentBean implements Serializable {
 	}
 
 	/// method
-	public void createStudent() {
+	public String createStudent() {
 		Student student = new Student(id, name, age, homeAddress);
 		studentDao.create(student);
+		return "student/students.xhtml?faces-redirect=true";
 	}
 
-	public void deleteStudent() {
+	public void deleteStudent(int id) {
 		studentDao.delete(id);
 	}
 
