@@ -10,11 +10,18 @@
 <body>
 	<h1>Student Table</h1>
 	<h:form>
-		<h:commandButton
-			action="/student/add-student.xhtml?faces-redirect=true"
+		<h:commandButton action="/student/add-student.xhtml?faces-redirect=true"
 			value="Create New" />
 	</h:form>
 	<br />
+
+	<h:form>
+		<p>Tim kiếm tên?</p>
+		<h:inputText value="#{studentBean.name}"></h:inputText>
+		<h:commandButton action="#{studentBean.getStudents()}" value="Search"></h:commandButton>
+	</h:form>
+	<br />
+
 	<h:dataTable value="#{studentBean.getStudents()}" var="s" border="1">
 		<h:column>
 			<f:facet name="header">ID</f:facet>
@@ -37,6 +44,10 @@
 			<h:form>
 				<h:commandButton value="Delete"
 					action="#{studentBean.deleteStudent(s.id)}">
+				</h:commandButton>
+
+				<h:commandButton value="Edit"
+					action="#{studentBean.edit(s.id)}">
 				</h:commandButton>
 			</h:form>
 		</h:column>

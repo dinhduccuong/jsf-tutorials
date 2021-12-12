@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import jmaster.io.dao.StudentDao;
 import jmaster.io.entity.Student;
@@ -63,16 +64,17 @@ public class StudentBean implements Serializable {
 	public String createStudent() {
 		Student student = new Student(id, name, age, homeAddress);
 		studentDao.create(student);
-		return "student/students.xhtml?faces-redirect=true";
+		return "/student/students.xhtml?faces-redirect=true";
 	}
 
 	public void deleteStudent(int id) {
 		studentDao.delete(id);
 	}
 
-	public void updateStudent() {
-		Student student = new Student(id, name, age, homeAddress);
+	public String updateStudent(Student student) {
 		studentDao.update(student);
+
+		return "/student/students.xhtml?faces-redirect=true";
 	}
 
 	public List<Student> getStudents() {
@@ -80,7 +82,9 @@ public class StudentBean implements Serializable {
 		return studentDao.search(name == null ? "" : name);
 	}
 
-	public Student getStudentById() {
-		return studentDao.getId(id);
+	public String edit(int id) {
+		Student student = studentDao.getId(id);
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("editStudent", student);
+		return "/student/edit-student.xhtml?faces-redirect=true";
 	}
 }

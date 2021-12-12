@@ -14,16 +14,19 @@
 	<h:form>
 		<h:commandLink action="/student/students.xhtml?faces-redirect=true" value="Back to list" />
 
+		<p>ID</p>
+		<h:inputText readonly="true" value="#{editStudent.id}"></h:inputText>
+
 		<p>What's your name?</p>
-		<h:inputText value="#{studentBean.name}"></h:inputText>
+		<h:inputText value="#{editStudent.name}"></h:inputText>
 
 		<p>What's your age?</p>
-		<h:inputText value="#{studentBean.age}"></h:inputText>
+		<h:inputText value="#{editStudent.age}"></h:inputText>
 
 		<p>What's your address?</p>
-		<h:inputText value="#{studentBean.homeAddress}"></h:inputText>
+		<h:inputText value="#{editStudent.homeAddress}"></h:inputText>
 
-		<h:commandButton value="Create" action="#{studentBean.createStudent()}">
+		<h:commandButton value="Update" action="#{studentBean.updateStudent(editStudent)}">
 		</h:commandButton>
 	</h:form>
 </h:body>
